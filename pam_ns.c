@@ -69,6 +69,8 @@ PAM_EXTERN int pam_sm_open_session(pam_handle_t *pamh, int flags, int argc, cons
 		return PAM_SESSION_ERR;
 	}
 
+	if(pwd->pw_uid == 0)
+		return PAM_SUCCESS;
 
 	/* Check uid */
 	if(uid != NULL && strcmp(username, uid) != 0) {
