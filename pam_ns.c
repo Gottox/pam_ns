@@ -46,17 +46,17 @@ PAM_EXTERN int pam_sm_open_session(pam_handle_t *pamh, int flags, int argc, cons
 		else if(strncmp(argv[i], "gid=", 4) == 0)
 			gid = argv[i] + 4;
 		else if (strcmp("mount", argv[i]) == 0)
-			unshare_flags = CLONE_NEWNS;
+			unshare_flags |= CLONE_NEWNS;
 		else if (strcmp("uts", argv[i]) == 0)
-			unshare_flags = CLONE_NEWUTS;
+			unshare_flags |= CLONE_NEWUTS;
 		else if (strcmp("ipc", argv[i]) == 0)
-			unshare_flags = CLONE_NEWIPC;
+			unshare_flags |= CLONE_NEWIPC;
 		else if (strcmp("net", argv[i]) == 0)
-			unshare_flags = CLONE_NEWNET;
+			unshare_flags |= CLONE_NEWNET;
 		else if (strcmp("pid", argv[i]) == 0)
-			unshare_flags = CLONE_NEWPID;
+			unshare_flags |= CLONE_NEWPID;
 		else if (strcmp("user", argv[i]) == 0)
-			unshare_flags = CLONE_NEWUSER;
+			unshare_flags |= CLONE_NEWUSER;
 	}
 
 	if (!(pwd = pam_modutil_getpwnam (pamh, username))) {
